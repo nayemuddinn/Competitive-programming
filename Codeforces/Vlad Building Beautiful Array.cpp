@@ -1,0 +1,72 @@
+/**
+.
+  author->  NATE
+.
+**/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+#define first_in_out       ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define For(i,n)           for(int i=0;i<n;i++)
+#define For2(i,n)          for(int i=1;i<=n;i++)
+#define For3(i, j, n)      for (int i = j; i <= n; i++)
+#define ndl                "\n"
+#define ll                 long long int
+#define PI                 3.1415926535897932384626
+#define INF                1e18
+#define pb                 push_back
+#define sortV(v)           sort(v.begin(),v.end())
+
+
+int main()
+{
+    first_in_out
+
+    ll t,n;
+    cin>>t;
+
+    while(t--)
+    {
+        cin>>n;
+
+        ll a[n];
+
+        For(i,n)
+        cin>>a[i];
+
+        sort(a,a+n);
+
+        ll min=a[0];      //we have to subsract the minimum value for
+        ll f=0;
+
+        For(i,n-1)
+        {
+            if((a[i]%2)!=(a[i+1]%2))
+            {
+                f=1;
+                break;
+
+            }
+        }
+
+        if(f==0)
+            cout<<"YES"<<ndl;
+        else
+        {
+            if(min&1==1)              //only odd array is possible
+                cout<<"YES"<<ndl;
+            else
+                cout<<"NO"<<ndl;
+        }
+    }
+
+
+
+}
+
+    //even-even=even
+    //odd-odd=even
+    //even-odd=odd
+    //odd-even=odd
+

@@ -1,0 +1,33 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+
+#define first_in_out       ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define For(i,n)           for(int i=0;i<n;i++)
+#define For2(i,n)          for(int i=1;i<=n;i++)
+#define For3(i, j, n)       for (int i = j; i <= n; i++)
+#define endl               "\n"
+#define ll                 long long int
+
+int main()
+{
+    first_in_out
+
+    ll n,t,cnt=0,solve=0;
+    cin>>n>>t;
+
+    For2(i,n)
+    {
+        solve+=5*i;
+        if(solve>240-t)
+            break;
+
+        cnt++;
+    }
+
+    cout<<cnt;
+
+
+
+}
+
