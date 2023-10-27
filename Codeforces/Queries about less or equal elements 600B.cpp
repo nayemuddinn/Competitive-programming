@@ -88,8 +88,10 @@ void solve()
 	For(i, m)
 	{
 		cin >> x;
+       
+		//ans =  upper_bound(a, a + n, x) - a;
 		ans = find(a, n, x);
-
+                
 		if (ans == -1)
 			ans = n;
 
