@@ -11,83 +11,92 @@ using namespace std;
 #define For(i,n)           for(int i=0;i<n;i++)
 #define For2(i,n)          for(int i=1;i<=n;i++)
 #define For3(i, j, n)      for (int i = j; i <= n; i++)
+#define For4(i,n)          for(int i=n-1; i>=0; i--)
 #define ndl                "\n"
 #define ll                 long long int
+#define double             long double
 #define PI                 3.1415926535897932384626
 #define INF                1e18
 #define pb                 push_back
-#define sortV(v)           sort(v.begin(),v.end())
+#define F                  first
+#define S                  second
+#define max_heap           priority_queue <ll>
+#define min_heap           priority_queue <ll, vector<ll>, greater<ll>>
+#define sortAll(v)         sort(v.begin(),v.end())
+#define bug(...)           __f (#__VA_ARGS__, __VA_ARGS__)
+#define print(a)           for(auto x : a) cout << x << " ";
+#define printpair(a)       for(auto x : a) cout << x.F << " " << x.S<< ndl;
+
+
+
+template <typename Arg1>
+void __f (const char* name, Arg1&& arg1)
+{
+    cout << name << " : " << arg1 << endl;
+}
+template <typename Arg1, typename... Args>
+void __f (const char* names, Arg1&& arg1, Args&&... args)
+{
+    const char* comma = strchr (names + 1, ',');
+    cout.write (names, comma - names) << " : " << arg1 << " | ";
+    __f (comma + 1, args...);
+}
+
+
+
+void solve()
+{
+    ll n, diff = 0, x;
+    cin >> n;
+
+    ll a[n], b[n];
+
+    For(i, n)
+    cin >> a[i];
+
+
+    For(i, n) {
+        cin >> b[i];
+        diff = max(a[i] - b[i], diff);
+    }
+
+    ll f = 0;
+
+    For(i, n)
+    {
+        x = max(a[i] - diff , 0LL);
+        if (x < b[i])
+        {
+            f = 1;
+            break;
+        }
+    }
+
+
+    if (f)
+        cout << "NO";
+    else
+        cout << "YES";
+    cout << ndl;
+
+}
+
 
 
 int main()
 {
     first_in_out
 
-    ll t,n;
-    cin>>t;
+    //clock_t z = clock();
 
-    while(t--)
-    {
-        cin>>n;
+    ll t = 1;
+    cin >> t;
 
-        ll a[n],b[n];
-
-        For(i,n)
-        cin>>a[i];
-
-        For(i,n)
-        cin>>b[i];
-
-        ll f=0,maxDiff=a[0]-b[0],diff;
+    while (t--)
+        solve();
 
 
-        if(b[0]>a[0])
-        {
-            cout<<"NO"<<ndl;
-            break;
-        }
-        else
-            diff=a[0]-b[0];
-
-
-        For2(i,n-1)
-        {
-
-            if(b[i]>a[i])
-            {
-                f=1;
-                break;
-            }
-
-            diff=a[i]-b[i];
-            maxDiff=max(maxDiff,diff);
-
-
-        }
-
-
-
-
-        if(f==0)
-        {
-            For(i,n)
-            {
-                 if(b[i]==0 and a[i]-maxDiff<0)
-                    continue;
-                 if(a[i]-maxDiff<b[i])
-                 {
-                     f=1;
-                     break;
-                 }
-            }
-        }
-
-        if(f==0)
-            cout<<"YES"<<ndl;
-        else
-            cout<<"NO"<<ndl;
-    }
-
+    //cerr << "Run Time : " << ((double)(clock() - z) / CLOCKS_PER_SEC);
 
 
 }
